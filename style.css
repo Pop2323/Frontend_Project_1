@@ -646,7 +646,7 @@ body {
 @media screen and (max-width: 1024px) and (max-width: 768px) {
     .about {
         margin-top: 50px;
-        height: 100vh;
+        /* height: 100vh; */
     }
     .about-container {
         flex-direction: column;

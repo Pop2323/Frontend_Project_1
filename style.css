@@ -668,7 +668,8 @@ body {
     justify-content: center;
     align-items: center;
     background-color: var(--main-color);
-    height: 50vh;
+    /* height: 50vh; */
+    margin: 10px;
 }
 .contact-title {
     font-family: var(--Saira-font);

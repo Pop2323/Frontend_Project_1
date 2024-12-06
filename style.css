@@ -559,6 +559,14 @@ body {
     padding-top: 10px;
     margin: 1rem 0;
 }
+
+@media screen and (max-width: 768px) {
+    .about-title {
+        font-size: 2rem;
+    }
+    
+}
+
 .about-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

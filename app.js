@@ -1,58 +1,111 @@
 // Theme Toggle Functionality
-const themeSwitch = document.querySelector('.theme-switch-wrapper');
-const themeCheckbox = themeSwitch.querySelector('.theme-switch-checkbox');
-const moonIcon = themeSwitch.querySelector('.fa-moon');
-const sunIcon = themeSwitch.querySelector('.fa-sun');
+class ThemeToggle {
+    constructor() {
+        // Select DOM elements
+        this.themeSwitch = document.querySelector('.theme-switch-wrapper');
+        this.themeCheckbox = this.themeSwitch.querySelector('.theme-switch-checkbox');
+        this.moonIcon = this.themeSwitch.querySelector('.fa-moon');
+        this.sunIcon = this.themeSwitch.querySelector('.fa-sun');
 
-// Function to toggle theme
-function toggleTheme() {
-    document.body.classList.toggle('dark-theme');
-    
-    // Update icon visibility based on theme
-    if (document.body.classList.contains('dark-theme')) {
-        // Dark theme colors
-        document.documentElement.style.setProperty('--main-color', '#121212');
-        document.documentElement.style.setProperty('--light-color', '#ffffff');
+        // Theme configuration
+        this.themes = {
+            light: {
+                '--main-color': '#121212',
+                '--light-color': '#000000',
+                '--orange-color': '#F88973'
+            },
+            dark: {
+                '--main-color': '#ffffff',
+                '--light-color': '#000000',
+                '--orange-color': '#F88973'
+            }
+        };
+
+        // Initialize event listeners
+        this.initializeEventListeners();
+
+        // Load saved theme on page load
+        this.loadSavedTheme();
+    }
+
+    // Set theme colors
+    setThemeColors(themeName) {
+        const themeColors = this.themes[themeName];
         
-        moonIcon.style.display = 'block';
-        sunIcon.style.display = 'block';
-    } else {
-        // Light theme colors (assuming you have these defined in your root CSS)
-        document.documentElement.style.setProperty('--main-color', '#ffffff');
-        document.documentElement.style.setProperty('--light-color', '#000000');
+        // Apply color variables
+        Object.entries(themeColors).forEach(([variable, value]) => {
+            document.documentElement.style.setProperty(variable, value);
+        });
+    }
+
+    // Toggle theme
+    toggleTheme() {
+        const currentTheme = document.body.classList.contains('dark-theme') ? 'light' : 'dark';
         
-        moonIcon.style.display = 'block';
-        sunIcon.style.display = 'block';
+        // Toggle body class
+        document.body.classList.toggle('dark-theme');
+        
+        // Set theme colors
+        this.setThemeColors(currentTheme);
+        
+        // Update checkbox and icons
+        this.updateThemeUI(currentTheme);
+        
+        // Save theme preference
+        this.saveThemePreference(currentTheme);
+    }
+
+    // Update UI elements based on current theme
+    updateThemeUI(themeName) {
+        // Update checkbox state
+        this.themeCheckbox.checked = (themeName === 'dark');
+
+        // Toggle icon visibility
+        if (themeName === 'dark') {
+            this.moonIcon.style.display = 'none';
+            this.sunIcon.style.display = 'block';
+        } else {
+            this.moonIcon.style.display = 'block';
+            this.sunIcon.style.display = 'none';
+        }
+    }
+
+    // Save theme preference to localStorage
+    saveThemePreference(themeName) {
+        localStorage.setItem('site-theme', themeName);
+    }
+
+    // Load saved theme from localStorage
+    loadSavedTheme() {
+        const savedTheme = localStorage.getItem('site-theme') || 'light';
+        
+        // Apply saved theme
+        this.setThemeColors(savedTheme);
+        this.updateThemeUI(savedTheme);
+        
+        // Add or remove dark theme class
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+        } else {
+            document.body.classList.remove('dark-theme');
+        }
+    }
+
+    // Initialize event listeners
+    initializeEventListeners() {
+        // Toggle on switch wrapper click
+        this.themeSwitch.addEventListener('click', () => {
+            this.toggleTheme();
+        });
+
+        // Toggle on checkbox change
+        this.themeCheckbox.addEventListener('change', () => {
+            this.toggleTheme();
+        });
     }
 }
 
-// Add event listeners
-themeSwitch.addEventListener('click', () => {
-    themeCheckbox.checked = !themeCheckbox.checked;
-    toggleTheme();
-});
-
-themeCheckbox.addEventListener('change', toggleTheme);
-
-// Optional: Persist theme preference in localStorage
+// Initialize theme toggle when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark-theme') {
-        document.body.classList.add('dark-theme');
-        themeCheckbox.checked = true;
-        
-        // Set dark theme colors
-        document.documentElement.style.setProperty('--main-color', '#121212');
-        document.documentElement.style.setProperty('--light-color', '#ffffff');
-        
-        moonIcon.style.display = 'none';
-        sunIcon.style.display = 'block';
-    }
-});
-
-// Save theme preference when changed
-themeSwitch.addEventListener('click', () => {
-    const isDarkTheme = document.body.classList.contains('dark-theme');
-    localStorage.setItem('theme', isDarkTheme ? 'dark-theme' : 'light-theme');
+    new ThemeToggle();
 });

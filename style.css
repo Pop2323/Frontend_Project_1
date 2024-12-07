@@ -5,8 +5,8 @@
 }
 
 :root {
-    --main-color: #ffffff;
-    --light-color: #000000; 
+    --main-color: #171e31;
+    /* --light-color: #000000;  */
     --orange-color: #f88973;
     --gray-color: #273039;
     --gray2-color: #313944;
@@ -16,7 +16,8 @@
     --gold-color: #a06931;
     /* --main-color: #171e31; */
     --dark-color: #21273a;
-    --light-color: #d8c78e;
+    --light-color: wheat;
+    --wheat-color: wheat;
     --darkGold-color: #5d4f44;
     --Saira-font:  "Saira Extra Condensed", serif;
     --Poppins-font: "Poppins", sans-serif;
@@ -56,15 +57,30 @@ body {
     color: var(--orange-color);
 }
 
+.logo img {
+    margin-top: 15px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
 @media screen and (max-width: 1024px) {
     .logo {
         font-size: 1.5rem;
+    }
+    .logo img {
+        width: 60px;
+        height: 60px;
     }
 }
 
 @media screen and (max-width: 768px) {
     .logo {
         font-size: 1.25rem;
+    }
+    .logo img {
+        width: 50px;
+        height: 50px;
     }
 }
 
@@ -333,9 +349,19 @@ body {
     width: 50%;
 }
 
+.header-container img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+
 @media screen and (max-width: 768px) {
     .header-container {
         width: 80%;
+    }
+    .header-container img {
+        width: 100px;
+        height: 100px;
     }
 }
 
@@ -351,7 +377,7 @@ body {
     font-family: var(--Poppins-font);
     font-size: 1.5rem;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    color: var(--light-color);
+    color: white;
     text-align: center;
     margin-bottom: 1rem;
 }
@@ -378,7 +404,7 @@ body {
 
 @media screen and (max-width: 1024px) {
     .hero-title {
-        font-size: 2.25rem;
+        font-size: 2rem;
     }
     .hero-text {
         font-size: 1.3rem;
@@ -392,7 +418,7 @@ body {
 
 @media screen and (max-width: 768px) {
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
     .hero-text {
         font-size: 1.2rem;
@@ -445,7 +471,7 @@ body {
     border-radius: 12px;
     background-color: var(--darkGray-color);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    color: var(--light-color);
+    color: var(--wheat-color);
     width: 100%;
     height: 100%;
 }
@@ -458,13 +484,13 @@ body {
 .service-title {
     font-family: var(--Poppins-font);
     font-size: 1.25rem;
-    color: var(--light-color);
+    color: var(--orange-color);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 .services-subtitle {
     font-family: var(--lobuster-font);
     font-size: 1rem;
-    color: var(--light-color);
+    color: wheat;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
@@ -535,7 +561,7 @@ body {
 .tech-text {
     font-family: var(--lobuster-font);
     font-size: 18px;
-    color: var(--light-color);
+    color: wheat;
 }
 
 /* About section */
@@ -588,7 +614,7 @@ body {
 
 .about-text {
     font-family: var(--Poppins-font);
-    color: var(--light-color);
+    color: var(--wheat-color);
     text-align: center;
     margin-bottom: 1rem;
     width: 70%;
@@ -596,14 +622,14 @@ body {
 .about-subtitle {
     font-family: var(--lobuster-font);
     font-size: 2rem;
-    color: var(--light-color);
+    color: wheat;
     text-align: center;
     margin-bottom: 1rem;
 }
 .about-description {
     font-family: var(--Poppins-font);
     font-size: 1rem;
-    color: var(--light-color);
+    color: wheat;
     text-align: center;
     margin-bottom: 1rem;
 }
@@ -640,7 +666,7 @@ body {
 }
 
 .btn-about:hover {
-    background-color: var(--light-color);
+    background-color: var(--wheat-color);
 }
 
 @media screen and (max-width: 1024px) and (max-width: 768px) {
@@ -749,21 +775,21 @@ body {
 .copyright {
     font-family: var(--Poppins-font);
     font-size: 1.15rem;
-    color: var(--light-color);
+    color: var(--wheat-color);
     text-align: center;
     margin-bottom: 8px;
 }
 .made-with-love {
     font-family: var(--Poppins-font);
     font-size: 1rem;
-    color: var(--light-color);
+    color: var(--wheat-color);
     text-align: center;
     margin-bottom: 8px;
 }
 .developed-by {
     font-family: var(--Poppins-font);
     font-size: 1rem;
-    color: var(--light-color);
+    color: var(--wheat-color);
     text-align: center;
     margin-bottom: 8px;
 }
@@ -776,7 +802,7 @@ body {
 .follow-us {
     font-family: var(--Poppins-font);
     font-size: 1rem;
-    color: var(--light-color);
+    color: var(--wheat-color);
     text-align: center;
     margin-bottom: 8px;
 }
@@ -791,7 +817,7 @@ body {
 }
 .social-icons i {
     font-size: 1.5rem;
-    color: var(--light-color);
+    color: var(--wheat-color);
 }
 
 .social-icons i:hover {
